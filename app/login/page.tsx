@@ -10,11 +10,13 @@ import { useAuth } from "@/lib/auth-context";
 export default function LoginPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
   const { setEmail } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setLoginError(null);
 
     const formData = new FormData(e.currentTarget);
     const email = formData.get('email') as string;
@@ -27,7 +29,9 @@ export default function LoginPage() {
       toast.success('Login successful!');
       router.push('/');
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : 'Login failed');
+      const errorMessage = error instanceof Error ? error.message : 'Login failed';
+      setLoginError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -56,6 +60,17 @@ export default function LoginPage() {
           <h2 className="text-2xl font-bold text-white mb-6 text-center">Welcome back</h2>
           
           <form onSubmit={handleSubmit} className="space-y-6">
+            {loginError && (
+              <div className="bg-[#3A1C1C] border border-[#E62E4D] rounded-md p-3 mb-4">
+                <p className="text-[#FF6B6B] text-sm flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                  </svg>
+                  <span>Invalid login credentials</span>
+                </p>
+              </div>
+            )}
+            
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email
@@ -65,7 +80,7 @@ export default function LoginPage() {
                 id="email"
                 name="email"
                 required
-                className="w-full px-4 py-3 rounded-md bg-[#2D3748] border border-[#4A5568] text-white focus:outline-none focus:ring-2 focus:ring-[#7B78FF]"
+                className={`w-full px-4 py-3 rounded-md bg-[#2D3748] border ${loginError ? 'border-[#E62E4D]' : 'border-[#4A5568]'} text-white focus:outline-none focus:ring-2 focus:ring-[#7B78FF]`}
                 placeholder="Enter your email"
               />
             </div>
@@ -79,7 +94,7 @@ export default function LoginPage() {
                 id="password"
                 name="password"
                 required
-                className="w-full px-4 py-3 rounded-md bg-[#2D3748] border border-[#4A5568] text-white focus:outline-none focus:ring-2 focus:ring-[#7B78FF]"
+                className={`w-full px-4 py-3 rounded-md bg-[#2D3748] border ${loginError ? 'border-[#E62E4D]' : 'border-[#4A5568]'} text-white focus:outline-none focus:ring-2 focus:ring-[#7B78FF]`}
                 placeholder="Enter your password"
               />
             </div>
