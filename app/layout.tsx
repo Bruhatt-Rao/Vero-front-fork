@@ -1,25 +1,29 @@
-import type React from "react"
-import "./globals.css"
-import { Inter } from "next/font/google"
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { AuthProvider } from "@/lib/auth-context";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Vero - Save Money with Automatic Coupons",
-  description: "We search for coupons at 30,000+ sites to help you save money",
-    generator: 'v0.dev'
-}
+export const metadata: Metadata = {
+  title: "Vero",
+  description: "Fake News Detector",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </body>
     </html>
-  )
+  );
 }
 
 

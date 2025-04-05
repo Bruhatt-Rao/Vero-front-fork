@@ -1,35 +1,14 @@
+'use client';
+
+import { Header } from '@/components/header';
 import Image from "next/image"
 import Link from "next/link"
 
 export default function Home() {
   return (
     <div className="flex flex-col bg-[#121826]">
-      {/* Header with logo and login */}
-      <div className="fixed top-0 left-0 right-0 z-10 flex items-center justify-between bg-[#1A2233] px-6 py-4 shadow-md border-b border-[#2D3748]/20">
-        <div className="flex items-center">
-          <div className="flex items-baseline">
-            <svg
-              width="40"
-              height="32"
-              viewBox="0 0 40 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="mr-0.5 text-[#7B78FF]"
-            >
-              {/* Checkmark V with extended right line */}
-              <path d="M8 20L20 28L40 12" stroke="#7B78FF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            <span className="text-4xl font-bold text-[#7B78FF]">ero</span>
-          </div>
-        </div>
-        <div>
-          <Link href="/login" className="text-sm font-medium text-[#7B78FF] hover:text-[#9D9BFF] transition-colors">
-            Log in
-          </Link>
-        </div>
-      </div>
-
-      {/* Main content */}
+      <Header />
+      
       <div className="flex w-full flex-col md:flex-row pt-16 min-h-screen">
         {/* Left section with background color and GIF */}
         <div className="relative flex w-full flex-1 items-center justify-center bg-gradient-to-br from-[#1A2233] to-[#121826] p-8 md:w-2/5">

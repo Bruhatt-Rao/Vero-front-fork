@@ -1,6 +1,38 @@
-import Link from "next/link"
+'use client';
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { login, saveToken } from "@/lib/api";
+import { toast } from "sonner";
+import { useAuth } from "@/lib/auth-context";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const { setEmail } = useAuth();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+
+    try {
+      const response = await login(email, password);
+      saveToken(response.token);
+      setEmail(email);
+      toast.success('Login successful!');
+      router.push('/');
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Login failed');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#121826] flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -23,7 +55,7 @@ export default function LoginPage() {
           
           <h2 className="text-2xl font-bold text-white mb-6 text-center">Welcome back</h2>
           
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
                 Email
@@ -31,6 +63,8 @@ export default function LoginPage() {
               <input
                 type="email"
                 id="email"
+                name="email"
+                required
                 className="w-full px-4 py-3 rounded-md bg-[#2D3748] border border-[#4A5568] text-white focus:outline-none focus:ring-2 focus:ring-[#7B78FF]"
                 placeholder="Enter your email"
               />
@@ -43,6 +77,8 @@ export default function LoginPage() {
               <input
                 type="password"
                 id="password"
+                name="password"
+                required
                 className="w-full px-4 py-3 rounded-md bg-[#2D3748] border border-[#4A5568] text-white focus:outline-none focus:ring-2 focus:ring-[#7B78FF]"
                 placeholder="Enter your password"
               />
@@ -50,9 +86,10 @@ export default function LoginPage() {
             
             <button
               type="submit"
-              className="w-full bg-[#E62E4D] text-white py-3 rounded-md font-medium hover:bg-[#FF3D5C] transition-colors"
+              disabled={isLoading}
+              className="w-full bg-[#E62E4D] text-white py-3 rounded-md font-medium hover:bg-[#FF3D5C] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Log in
+              {isLoading ? 'Logging in...' : 'Log in'}
             </button>
           </form>
           
@@ -67,5 +104,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  )
-} 
+  );
+}
