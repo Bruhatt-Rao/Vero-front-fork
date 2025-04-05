@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utility classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Theme variables */
+@layer base {
+  :root {
+    /* Base colors */
+    --color-white: #ffffff;
+    --color-black: #0a0a0a;
+    --color-gray-100: #f5f5f5;
+    --color-gray-200: #e5e5e5;
+    --color-gray-300: #d4d4d4;
+    --color-gray-400: #a3a3a3;
+    --color-gray-500: #737373;
+    --color-gray-600: #404040;
+    --color-gray-700: #262626;
+    --color-gray-800: #1a1a1a;
+    --color-gray-900: #171717;
+
+    /* Brand colors */
+    --color-primary: #3b82f6;
+    --color-primary-dark: #2563eb;
+    --color-accent: #f59e0b;
+    --color-destructive: #ef4444;
+    --color-destructive-dark: #991b1b;
+
+    /* Chart colors */
+    --color-chart-1: #e67e7e;
+    --color-chart-2: #2a8c7a;
+    --color-chart-3: #2c4a5c;
+    --color-chart-4: #e6c35c;
+    --color-chart-5: #e6a35c;
+
+    /* Light theme */
+    --background: var(--color-white);
+    --foreground: var(--color-black);
+    --card: var(--color-white);
+    --card-foreground: var(--color-black);
+    --popover: var(--color-white);
+    --popover-foreground: var(--color-black);
+    --primary: var(--color-gray-900);
+    --primary-foreground: var(--color-gray-100);
+    --secondary: var(--color-gray-100);
+    --secondary-foreground: var(--color-gray-900);
+    --muted: var(--color-gray-100);
+    --muted-foreground: var(--color-gray-500);
+    --accent: var(--color-gray-100);
+    --accent-foreground: var(--color-gray-900);
+    --destructive: var(--color-destructive);
+    --destructive-foreground: var(--color-gray-100);
+    --border: var(--color-gray-200);
+    --input: var(--color-gray-200);
+    --ring: var(--color-black);
+
+    /* Sidebar - Light theme */
+    --sidebar-background: var(--color-gray-100);
+    --sidebar-foreground: var(--color-gray-600);
+    --sidebar-primary: var(--color-gray-800);
+    --sidebar-primary-foreground: var(--color-gray-100);
+    --sidebar-accent: var(--color-gray-100);
+    --sidebar-accent-foreground: var(--color-gray-800);
+    --sidebar-border: var(--color-gray-200);
+    --sidebar-ring: var(--color-primary);
+
+    /* Spacing and sizing */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme */
+    --background: var(--color-black);
+    --foreground: var(--color-gray-100);
+    --card: var(--color-black);
+    --card-foreground: var(--color-gray-100);
+    --popover: var(--color-black);
+    --popover-foreground: var(--color-gray-100);
+    --primary: var(--color-gray-100);
+    --primary-foreground: var(--color-gray-900);
+    --secondary: var(--color-gray-700);
+    --secondary-foreground: var(--color-gray-100);
+    --muted: var(--color-gray-700);
+    --muted-foreground: var(--color-gray-400);
+    --accent: var(--color-gray-700);
+    --accent-foreground: var(--color-gray-100);
+    --destructive: var(--color-destructive-dark);
+    --destructive-foreground: var(--color-gray-100);
+    --border: var(--color-gray-700);
+    --input: var(--color-gray-700);
+    --ring: var(--color-gray-300);
+
+    /* Chart colors - Dark theme */
+    --chart-1: var(--color-primary);
+    --chart-2: #10b981;
+    --chart-3: var(--color-accent);
+    --chart-4: #ffffff;
+    --chart-5: #ec4899;
+
+    /* Sidebar - Dark theme */
+    --sidebar-background: var(--color-gray-800);
+    --sidebar-foreground: var(--color-gray-100);
+    --sidebar-primary: var(--color-primary-dark);
+    --sidebar-primary-foreground: var(--color-white);
+    --sidebar-accent: var(--color-gray-700);
+    --sidebar-accent-foreground: var(--color-gray-100);
+    --sidebar-border: var(--color-gray-700);
+    --sidebar-ring: var(--color-primary);
+  }
+}
+
+/* Base styles with variables */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
