@@ -3,6 +3,7 @@
 import { Header } from '@/components/header';
 import Image from "next/image"
 import Link from "next/link"
+import { TypingAnimation } from '@/components/typing-animation';
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       
       <div className="flex w-full flex-col md:flex-row pt-16 min-h-screen">
         {/* Left section with background color and GIF */}
-        <div className="relative flex w-full flex-1 items-center justify-center bg-gradient-to-br from-[#1A2233] to-[#121826] p-8 md:w-2/5">
+        <div className="relative flex w-full flex-1 items-center justify-center bg-[#121826] p-8 md:w-2/5">
           <div className="relative h-[600px] w-[600px] flex items-center justify-center -mt-16">
             <Image
               src="/truth.gif"
@@ -25,15 +26,26 @@ export default function Home() {
         </div>
 
         {/* Right section with content */}
-        <div className="flex w-full flex-1 flex-col items-center justify-center bg-[#1A2233] p-8 md:w-3/5 md:items-start md:p-16">
+        <div className="flex w-full flex-1 flex-col items-center justify-center bg-[#121826] p-8 md:w-3/5 md:items-start md:p-16">
           <div className="max-w-2xl">
             <h2 className="mb-12 text-center text-4xl font-bold leading-tight text-white md:text-left md:text-5xl">
-              False news spreads 70% faster than truth. <span className="text-[#7B78FF] font-bold">Vero</span> is your lie detector for headlines
+              <span className="text-[#7B78FF] font-bold">Vero</span> spots fake headlines{" "}
+              <TypingAnimation />
             </h2>
 
-            <button className="mb-12 rounded-md bg-[#E62E4D] px-8 py-4 text-xl font-medium text-white transition-all hover:bg-[#FF3D5C] hover:shadow-md shadow-[#E62E4D]/20">
+            <button className="mb-4 rounded-md bg-[#E62E4D] px-8 py-4 text-xl font-medium text-white transition-all hover:bg-[#FF3D5C] hover:shadow-md shadow-[#E62E4D]/20">
               Add to Chrome
             </button>
+            
+            <div className="text-gray-400 text-center md:text-left">
+              <span className="text-[#7B78FF] font-bold">75%</span>{" "}
+              <span className="text-[#7B78FF] font-bold">of users</span>{" "}
+              say they'd
+              <br />
+              use a tool to{" "}
+              <span className="text-[#7B78FF] font-bold">flag fake headlines</span>{" "}
+              if available
+            </div>
           </div>
         </div>
       </div>
@@ -62,7 +74,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="relative h-[600px] bg-[#1A2233] rounded-lg overflow-hidden">
+            <div className="relative h-[600px] bg-[#121826] rounded-lg overflow-hidden">
               <Image
                 src="/placeholder.svg?height=600&width=800"
                 alt="How Vero works"
