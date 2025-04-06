@@ -53,9 +53,13 @@ export default function Home() {
               <TypingAnimation />
             </h2>
 
-            <button className="mb-4 rounded-md bg-[#E62E4D] px-8 py-4 text-xl font-medium text-white transition-all hover:bg-[#FF3D5C] hover:shadow-md shadow-[#E62E4D]/20">
+            <a 
+              href="/fake_news.zip" 
+              download
+              className="mb-4 rounded-md bg-[#E62E4D] px-8 py-4 text-xl font-medium text-white transition-all hover:bg-[#FF3D5C] hover:shadow-md shadow-[#E62E4D]/20 inline-block"
+            >
               Add to Chrome
-            </button>
+            </a>
             
             <div className="text-gray-400 text-center md:text-left">
               <span className="text-[#7B78FF] font-bold">75%</span>{" "}
