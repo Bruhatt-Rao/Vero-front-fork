@@ -100,7 +100,7 @@ export default function Home() {
             <div className={`relative h-[600px] rounded-lg overflow-hidden ${isBottomSectionVisible ? 'animate-slide-in-left' : 'opacity-0'} flex items-center justify-center bg-transparent`}>
               <div className="w-[700px] h-[560px]">
                 <video
-                  src="/verovid.mov"
+                  src="https://res.cloudinary.com/dsj1tgvqv/video/upload/v1743952353/verogif_tobhjw.mov"
                   autoPlay
                   loop
                   muted
