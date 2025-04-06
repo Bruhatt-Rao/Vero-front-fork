@@ -55,7 +55,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center md:items-start">
               <a 
-                href="/fake_news.zip"
+                href="/Vero.zip"
                 download
                 className="mb-4 rounded-md bg-[#E62E4D] px-8 py-4 text-xl font-medium text-white transition-all hover:bg-[#FF3D5C] hover:shadow-md shadow-[#E62E4D]/20 inline-block"
               >
