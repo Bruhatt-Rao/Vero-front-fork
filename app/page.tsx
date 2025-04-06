@@ -3,31 +3,50 @@
 import { Header } from '@/components/header';
 import Image from "next/image"
 import Link from "next/link"
+import Script from 'next/script'
 import { TypingAnimation } from '@/components/typing-animation';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 export default function Home() {
+  const [topSectionRef, isTopSectionVisible] = useIntersectionObserver();
+  const [bottomSectionRef, isBottomSectionVisible] = useIntersectionObserver();
+
   return (
     <div className="flex flex-col bg-[#121826]">
       <Header />
+      <Script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module" />
       
-      <div className="flex w-full flex-col md:flex-row pt-16 min-h-screen">
+      <div ref={topSectionRef} className="flex w-full flex-col md:flex-row pt-16 min-h-screen relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/background.avif"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            style={{ objectFit: 'cover' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#121826]/80 to-[#121826]/90"></div>
+        </div>
+
         {/* Left section with background color and GIF */}
-        <div className="relative flex w-full flex-1 items-center justify-center bg-[#121826] p-8 md:w-2/5">
-          <div className="relative h-[600px] w-[600px] flex items-center justify-center -mt-16">
-            <Image
-              src="/truth.gif"
-              alt="Vero in action"
-              width={600}
-              height={600}
-              className="object-contain brightness-90"
-              priority
-            />
+        <div className="relative flex w-full flex-1 items-center justify-center p-8 md:w-2/5">
+          <div className={`relative h-[500px] w-[500px] flex items-center justify-center -mt-16 ${isTopSectionVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
+            <dotlottie-player 
+              src="https://lottie.host/4de4415b-545f-49c1-bbff-34179b72d505/6Dg5t1hTFd.lottie" 
+              background="transparent" 
+              speed="1" 
+              style={{ width: '500px', height: '500px' }} 
+              loop 
+              autoplay
+            ></dotlottie-player>
           </div>
         </div>
 
         {/* Right section with content */}
-        <div className="flex w-full flex-1 flex-col items-center justify-center bg-[#121826] p-8 md:w-3/5 md:items-start md:p-16">
-          <div className="max-w-2xl">
+        <div className="relative flex w-full flex-1 flex-col items-center justify-center p-8 md:w-3/5 md:items-start md:p-16">
+          <div className={`max-w-2xl ${isTopSectionVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
             <h2 className="mb-12 text-center text-4xl font-bold leading-tight text-white md:text-left md:text-5xl">
               <span className="text-[#7B78FF] font-bold">Vero</span> spots fake headlines{" "}
               <TypingAnimation />
@@ -51,10 +70,13 @@ export default function Home() {
       </div>
 
       {/* Extended section below */}
-      <div className="w-full bg-[#121826] py-16">
+      <div ref={bottomSectionRef} className="w-full py-16 relative" style={{
+        background: 'linear-gradient(180deg, rgba(18,24,38,0.9) 0%, rgba(7,2,91,1) 50%, rgba(0,35,115,1) 100%)'
+      }}>
+        <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-[#121826]/90 to-transparent"></div>
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className={`space-y-6 ${isBottomSectionVisible ? 'animate-slide-in-right' : 'opacity-0'}`}>
               <h3 className="text-3xl font-bold text-white">How Vero Works</h3>
               <p className="text-lg text-gray-300">
                 Vero instantly spots misinformation through the title of the article, and tells you if its real or not so you won't have to worry about reading and sharing false news.
@@ -74,7 +96,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className="relative h-[600px] bg-[#121826] rounded-lg overflow-hidden">
+            <div className={`relative h-[600px] rounded-lg overflow-hidden ${isBottomSectionVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
               <Image
                 src="/placeholder.svg?height=600&width=800"
                 alt="How Vero works"

@@ -2,6 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+@keyframes slideOutLeft {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 1.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 1.5s ease-out forwards;
+}
+
+.animate-slide-out-right {
+  animation: slideOutRight 1.5s ease-out forwards;
+}
+
+.animate-slide-out-left {
+  animation: slideOutLeft 1.5s ease-out forwards;
+}
+
 :root {
   --primary: #7b78ff;
   --primary-hover: #9d9bff;

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link"
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { register } from "@/lib/api";
@@ -41,18 +42,15 @@ export default function SignupPage() {
       <div className="w-full max-w-md">
         <div className="bg-[#1A2233] p-8 rounded-lg shadow-lg">
           <div className="flex items-center justify-center mb-8">
-            <Link href="/" className="flex items-baseline">
-              <svg
-                width="40"
-                height="32"
-                viewBox="0 0 40 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="mr-0.5 text-[#7B78FF]"
-              >
-                <path d="M8 20L20 28L40 12" stroke="#7B78FF" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span className="text-4xl font-bold text-[#7B78FF]">ero</span>
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Vero Logo"
+                width={200}
+                height={52}
+                className="h-10 w-auto"
+                priority
+              />
             </Link>
           </div>
           
