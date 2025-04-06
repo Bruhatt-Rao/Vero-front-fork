@@ -2,7 +2,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+*.mov
+*.mp4
+# Add any other video extensions you use
 # testing
 /coverage
 
