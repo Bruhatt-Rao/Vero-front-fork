@@ -97,14 +97,17 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div className={`relative h-[600px] rounded-lg overflow-hidden ${isBottomSectionVisible ? 'animate-slide-in-left' : 'opacity-0'}`}>
-              <Image
-                src="/placeholder.svg?height=600&width=800"
-                alt="How Vero works"
-                width={1000}
-                height={600}
-                className="object-cover w-full h-full"
-              />
+            <div className={`relative h-[600px] rounded-lg overflow-hidden ${isBottomSectionVisible ? 'animate-slide-in-left' : 'opacity-0'} flex items-center justify-center bg-transparent`}>
+              <div className="w-[700px] h-[560px]">
+                <video
+                  src="/verovid.mov"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-contain"
+                />
+              </div>
             </div>
           </div>
         </div>
