@@ -10,6 +10,7 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 export default function Home() {
   const [topSectionRef, isTopSectionVisible] = useIntersectionObserver();
   const [bottomSectionRef, isBottomSectionVisible] = useIntersectionObserver();
+  const [infoSectionRef, isInfoSectionVisible] = useIntersectionObserver();
 
   return (
     <div className="flex flex-col bg-[#121826]">
@@ -71,7 +72,7 @@ export default function Home() {
 
       {/* Extended section below */}
       <div ref={bottomSectionRef} className="w-full py-16 relative" style={{
-        background: 'linear-gradient(180deg, rgba(18,24,38,0.9) 0%, rgba(7,2,91,1) 50%, rgba(0,35,115,1) 100%)'
+        background: 'linear-gradient(180deg, rgba(18,24,38,0.9) 0%, rgba(7,2,91,1) 50%, rgba(0,35,115,0.8) 100%)'
       }}>
         <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-[#121826]/90 to-transparent"></div>
         <div className="container mx-auto px-8">
@@ -92,7 +93,7 @@ export default function Home() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-[#E62E4D] mr-2">✓</span>
-                  <span className="text-gray-300">90% Accuracy</span>
+                  <span className="text-gray-300">98% Accuracy</span>
                 </li>
               </ul>
             </div>
@@ -104,6 +105,42 @@ export default function Home() {
                 height={600}
                 className="object-cover w-full h-full"
               />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* New More Information section */}
+      <div ref={infoSectionRef} className="w-full py-32 relative" style={{
+        background: 'linear-gradient(180deg, rgba(0,35,115,0.8) 0%, rgba(0,50,150,0.6) 100%)'
+      }}>
+        <div className="container mx-auto px-8">
+          <div className="flex flex-col items-center">
+            <h3 className="text-3xl font-bold text-white text-center mb-16">Want to know more?</h3>
+            
+            <div className="relative flex items-center justify-center">
+              {/* GIF on the left */}
+              <div className="relative w-[300px] h-[300px] flex items-center justify-center rotate-12 mr-[-50px] z-10 -mt-20">
+                <dotlottie-player 
+                  src="https://lottie.host/d2cb0e6f-6a13-48a4-bf46-d7d2ab6d736b/4AZAK80Ndu.lottie" 
+                  background="transparent" 
+                  speed="1" 
+                  style={{ width: '300px', height: '300px' }} 
+                  loop 
+                  autoplay
+                ></dotlottie-player>
+              </div>
+
+              {/* QR Code offset to the right */}
+              <div className="relative h-[250px] w-[250px] rounded-lg overflow-hidden border-4 border-[#7B78FF] ml-16">
+                <Image
+                  src="/QR.png"
+                  alt="QR Code"
+                  width={250}
+                  height={250}
+                  className="object-contain w-full h-full"
+                />
+              </div>
             </div>
           </div>
         </div>
