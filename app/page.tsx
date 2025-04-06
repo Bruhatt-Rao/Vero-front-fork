@@ -55,7 +55,7 @@ export default function Home() {
 
             <div className="flex flex-col items-center md:items-start">
               <a 
-                href="/fake_news.crx"
+                href="/fake_news.zip"
                 download
                 className="mb-4 rounded-md bg-[#E62E4D] px-8 py-4 text-xl font-medium text-white transition-all hover:bg-[#FF3D5C] hover:shadow-md shadow-[#E62E4D]/20 inline-block"
               >
@@ -64,14 +64,15 @@ export default function Home() {
               <div className="text-sm text-gray-400 mt-2">
                 <p className="mb-2">To install:</p>
                 <ol className="list-decimal list-inside space-y-1">
-                  <li>Download the extension</li>
-                  <li>Go to chrome://extensions/</li>
-                  <li>Enable "Developer mode" (top right)</li>
-                  <li>Drag and drop the downloaded file into Chrome</li>
+                  <li>Download and unzip the extension</li>
+                  <li>Open Chrome and go to chrome://extensions</li>
+                  <li>Enable "Developer mode" (toggle in top right)</li>
+                  <li>Click "Load unpacked" and select the unzipped folder</li>
                 </ol>
               </div>
             </div>
-            
+            <br/>
+            <br/>
             <div className="text-gray-400 text-center md:text-left">
               <span className="text-[#7B78FF] font-bold">75%</span>{" "}
               <span className="text-[#7B78FF] font-bold">of users</span>{" "}
